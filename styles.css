@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.password-container {
+    margin-bottom: 20px;
+}
+
+.password-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.password-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.strength-indicator {
+    display: none; /* Initially hide the indicator */
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.strength-indicator:not(:empty) {
+    display: block; /* Only show the indicator when it's not empty */
+}
+
+/* Styling based on the strength of the password */
+.very-weak {
+    background-color: #ff3e36;
+}
+
+.weak {
+    background-color: #ff691f;
+}
+
+.moderate {
+    background-color: #ffda36;
+}
+
+.strong {
+    background-color: #0fdd87;
+}
+
+.very-strong {
+    background-color: #0fdd87;
+}
