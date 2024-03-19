@@ -1,20 +1,50 @@
+document.getElementById('generate-password').addEventListener('click', function() {
+    var generatedPassword = generateStrongPassword();
+    document.getElementById('password').value = generatedPassword; // Set the password input to the generated password
+    // Trigger the input event to update the strength indicator
+    var event = new Event('input', {
+        bubbles: true,
+        cancelable: true,
+    });
+    document.getElementById('password').dispatchEvent(event);
+});
 
-document.getElementById('password').addEventListener('input', function(e) {
+function generateStrongPassword() {
+    var length = 12, // Password length
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
+/*document.getElementById('show-password').addEventListener('change', function() {
+    var passwordInput = document.getElementById('password');
+    if (this.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+});*/
+
+/*document.getElementById('password').addEventListener('input', function(e) {
     var passwordInput = e.target.value.trim(); // Remove leading and trailing whitespaces
     var strengthIndicator = document.getElementById('password-strength');
     
     // Check if the input field is empty
     if (passwordInput === '') {
         strengthIndicator.innerText = ''; // Clear the strength indicator if input is empty
-        strengthIndicator.className = 'strength-indicator'; // Reset class
+        strengthIndicator.classList.remove('active'); // Remove 'active' class
     } else {
         var strengthText = checkPasswordStrength(passwordInput);
         strengthIndicator.innerText = 'Strength: ' + strengthText;
     
-        strengthIndicator.className = 'strength-indicator ' + strengthText.toLowerCase().replace(/\s/g, '-');
+        // Update the class for CSS styling based on strength
+        strengthIndicator.classList.add('active'); // Add 'active' class
     }
 });
-
+*/
 
 document.getElementById('password').addEventListener('input', function(e) {
     var strengthText = checkPasswordStrength(e.target.value);
